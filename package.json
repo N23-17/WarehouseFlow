@@ -1,0 +1,21 @@
+{
+  "name": "warehouse-flow",
+  "version": "1.0.0",
+  "description": "NexusWMS - Enterprise Fulfillment & Inventory Terminal",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build required'",
+    "lint": "echo 'No linter configured'"
+  },
+  "keywords": [
+    "warehouse",
+    "wms",
+    "inventory"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
