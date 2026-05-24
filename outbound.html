@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outbound Operations - NexusControl</title>
+    <link id="theme-style" rel="stylesheet" href="themes/neo.css" />
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">📦</span>
+                <h2>NexusWMS</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="icon">📊</span> Dashboard
+                </a>
+                <a href="inventory.html" class="nav-item">
+                    <span class="icon">📋</span> Inventory List
+                </a>
+                <a href="inbound.html" class="nav-item">
+                    <span class="icon">📥</span> Inbound / Receiving
+                </a>
+                <a href="outbound.html" class="nav-item active">
+                    <span class="icon">📤</span> Outbound / Shipping
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="nav-item logout">
+                    <span class="icon">🚪</span> Exit Demo
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <div class="page-title">
+                        <h1>Outbound Shipping &amp; Pick Lists</h1>
+                        <p class="subtitle">Monitor active customer order dispatches and trigger line consolidation</p>
+                    </div>
+                    <select id="themeSwitcher" title="Switch Theme">
+                        <option value="neo">🌐 Neo Logistics</option>
+                        <option value="induspro">🏭 Industrial Pro</option>
+                        <option value="minimal">☀️ Minimal SaaS</option>
+                        <option value="mili">🎖️ Military Command</option>
+                        <option value="luxcop">💎 Luxury Corporate</option>
+                    </select>
+                </div>
+                <div class="user-profile">
+                    <span>🔧</span>
+                    <span>Demo Operator</span>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Pending Outbound Dispatches</h2>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Order Ref</th>
+                                <th>Customer Account</th>
+                                <th>Line Items</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>SO-9941</code></td>
+                                <td>Global Tech Distributors</td>
+                                <td>3 lines (450 units)</td>
+                                <td><span class="badge badge-warning" id="status-9941">Awaiting Picking</span></td>
+                                <td>
+                                    <button class="btn btn-secondary btn-sm" onclick="processOrder('9941', 'Generate Pick Slip')">Print Pick Slip</button>
+                                    <button class="btn btn-primary btn-sm" onclick="processOrder('9941', 'Shipment Cleared')">Dispatch Order</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>SO-9942</code></td>
+                                <td>Apex Logistics Corp</td>
+                                <td>1 line (12 units)</td>
+                                <td><span class="badge badge-success" id="status-9942">Packed &amp; Staged</span></td>
+                                <td>
+                                    <button class="btn btn-secondary btn-sm" onclick="processOrder('9942', 'Label Re-print')">Print BOL</button>
+                                    <button class="btn btn-primary btn-sm" onclick="processOrder('9942', 'Shipment Cleared')">Dispatch Order</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>SO-9943</code></td>
+                                <td>Matrix Manufacturing Ltd</td>
+                                <td>8 lines (2,100 units)</td>
+                                <td><span class="badge badge-danger" id="status-9943">Stock Allocation Exception</span></td>
+                                <td>
+                                    <button class="btn btn-secondary btn-sm" disabled style="opacity:0.4; cursor:not-allowed;">Allocation Error</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
+    <script src="app.js"></script>
+</body>
+</html>

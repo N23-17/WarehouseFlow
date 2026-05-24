@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WMS Terminal Authentication - NexusControl</title>
+    <!--
+        Login uses the base style.css (which already defaults to neo palette).
+        A tiny inline script applies any saved theme override at the root level
+        so the login page also reflects the user's chosen theme colours.
+    -->
+    <link id="login-theme" rel="stylesheet" href="style.css" />
+    <script>
+        // Apply saved theme variables before paint to avoid flash
+        (function () {
+            const THEME_KEY = 'nexuswms_theme';
+            const saved = localStorage.getItem(THEME_KEY);
+            if (saved && saved !== 'neo') {
+                // Dynamically load the chosen theme to override style.css vars on login page too
+                const link = document.getElementById('login-theme');
+                if (link) link.href = 'themes/' + saved + '.css';
+            }
+        })();
+    </script>
+</head>
+<body class="login-body">
+    <div class="login-wrapper">
+        <div class="login-card">
+            <div class="login-header">
+                <span class="login-logo-icon">📦</span>
+                <h1>NexusWMS Engine</h1>
+                <p>Enterprise Fulfillment &amp; Inventory Terminal</p>
+            </div>
+
+            <div class="demo-notice-box">
+                <strong>🔒 Demo Mode Active</strong>
+                <p>Authentication is bypassed. Click the button below to enter the dashboard immediately.</p>
+            </div>
+
+            <form action="dashboard.html" method="GET" class="demo-form" id="loginForm">
+                <div class="form-group">
+                    <label for="usernameField">Operator ID / Email</label>
+                    <input type="text" id="usernameField" value="admin.demo@nexuswms.local" placeholder="Enter alphanumeric ID">
+                </div>
+                <div class="form-group">
+                    <label for="passwordField">Security Key / Terminal PIN</label>
+                    <input type="password" id="passwordField" value="demopassword" placeholder="Enter credentials">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    Authenticate Session &amp; Enter
+                </button>
+            </form>
+        </div>
+        <div class="login-footer">
+            <p>NexusControl Industrial Environment v4.12.0-Sandbox Offline Template</p>
+        </div>
+    </div>
+</body>
+</html>

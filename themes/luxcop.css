@@ -1,0 +1,108 @@
+/*
+ * ═══════════════════════════════════════════════
+ *  THEME: Luxury Corporate
+ *  Vibe: Premium boardroom — obsidian black,
+ *        champagne gold accents, serif elegance.
+ *        Think Bloomberg Terminal meets high-end SaaS.
+ * ═══════════════════════════════════════════════
+ */
+
+@import url('../style.css');
+
+:root {
+    --bg-main:         #0a0a0a;
+    --bg-sidebar:      #111111;
+    --bg-card:         #141414;
+    --border-color:    rgba(212, 175, 55, 0.22);
+    --text-primary:    #f5f0e8;
+    --text-muted:      #8a8070;
+
+    --accent-primary:  #d4af37;   /* champagne gold */
+    --accent-green:    #6fcf97;   /* understated mint */
+    --accent-yellow:   #f2c94c;
+    --accent-purple:   #bb86fc;
+    --accent-danger:   #eb5757;
+
+    --nav-active-bg:   var(--accent-primary);
+    --nav-active-text: #0a0a0a;
+
+    --login-grad-a:    #111111;
+    --login-grad-b:    #0a0a0a;
+    --toast-bg:        #141414;
+}
+
+/* Sidebar with gold bottom-accent line at top */
+.sidebar {
+    border-right: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.logo {
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Gold serif logo */
+.logo h2 {
+    font-family:    Georgia, "Times New Roman", serif;
+    font-size:      1.1rem;
+    letter-spacing: 0.04em;
+    color:          var(--accent-primary);
+    font-style:     italic;
+}
+
+/* Refined nav items */
+.nav-item {
+    letter-spacing: 0.02em;
+    font-weight:    400;
+}
+
+.nav-item.active {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+/* Cards: subtle gold top border */
+.card {
+    border-top: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+}
+
+.card:hover {
+    border-top-color: var(--accent-primary);
+    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.08);
+}
+
+/* Gold progress bar */
+.progress-bar {
+    background: linear-gradient(90deg, #d4af37, #f2c94c);
+}
+
+/* KPI values in warm gold */
+.kpi-value {
+    color:       var(--accent-primary);
+    font-weight: 300;
+    font-size:   2.2rem;
+}
+
+/* Badge tweaks for premium feel */
+.badge {
+    font-weight:    600;
+    letter-spacing: 0.05em;
+    border-radius:  4px;
+}
+
+/* SKU chips — discreet gold tint */
+.sku {
+    color:         var(--accent-primary);
+    background:    rgba(212, 175, 55, 0.06);
+    border:        1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Buttons — refined */
+.btn-primary {
+    background: linear-gradient(135deg, #d4af37, #b8960c);
+    color:      #0a0a0a;
+    font-weight: 700;
+}
+
+/* User profile pill */
+.user-profile { border-color: rgba(212, 175, 55, 0.2); }
