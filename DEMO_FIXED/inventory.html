@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management - NexusControl</title>
+    <link id="theme-style" rel="stylesheet" href="themes/neo.css" />
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">📦</span>
+                <h2>NexusWMS</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="icon">📊</span> Dashboard
+                </a>
+                <a href="inventory.html" class="nav-item active">
+                    <span class="icon">📋</span> Inventory List
+                </a>
+                <a href="inbound.html" class="nav-item">
+                    <span class="icon">📥</span> Inbound / Receiving
+                </a>
+                <a href="outbound.html" class="nav-item">
+                    <span class="icon">📤</span> Outbound / Shipping
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="nav-item logout">
+                    <span class="icon">🚪</span> Exit Demo
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <div class="page-title">
+                        <h1>Master Inventory Registry</h1>
+                        <p class="subtitle">Search, filter, and audit physical items across storage zones</p>
+                    </div>
+                    <select id="themeSwitcher" title="Switch Theme">
+                        <option value="neo">🌐 Neo Logistics</option>
+                        <option value="induspro">🏭 Industrial Pro</option>
+                        <option value="minimal">☀️ Minimal SaaS</option>
+                        <option value="mili">🎖️ Military Command</option>
+                        <option value="luxcop">💎 Luxury Corporate</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" id="btnNewItem">+ Add Mock SKU</button>
+            </header>
+
+            <div class="content-body">
+                <!-- Filter Toolbar -->
+                <div class="card toolbar">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="inventorySearch" placeholder="Filter by SKU, Item Name, or Zone...">
+                    </div>
+                    <div class="filter-options">
+                        <select id="zoneFilter">
+                            <option value="all">All Zones</option>
+                            <option value="A">Zone A — Fast Move</option>
+                            <option value="B">Zone B — Hazmat</option>
+                            <option value="C">Zone C — Pallet Rack</option>
+                            <option value="D">Zone D — Bulk Storage</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Master Table Card -->
+                <div class="card">
+                    <table class="data-table" id="inventoryTable">
+                        <thead>
+                            <tr>
+                                <th>SKU Reference</th>
+                                <th>Item Description</th>
+                                <th>Storage Location</th>
+                                <th>On Hand Qty</th>
+                                <th>Allocated Qty</th>
+                                <th>Available Qty</th>
+                                <th>UOM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-zone="A">
+                                <td><code class="sku">MECH-1092</code></td>
+                                <td>M12 Zinc Flange Nuts</td>
+                                <td>A-02-14</td>
+                                <td>200</td>
+                                <td>50</td>
+                                <td>150</td>
+                                <td>Box/250</td>
+                            </tr>
+                            <tr data-zone="B">
+                                <td><code class="sku">ELEC-8821</code></td>
+                                <td>Lithium-Ion Battery Packs</td>
+                                <td>B-04-01</td>
+                                <td>12</td>
+                                <td>0</td>
+                                <td>12</td>
+                                <td>Pallet</td>
+                            </tr>
+                            <tr data-zone="C">
+                                <td><code class="sku">COMP-4040</code></td>
+                                <td>SATA Solid State Drive 1TB</td>
+                                <td>C-09-22</td>
+                                <td>1,420</td>
+                                <td>380</td>
+                                <td>1,040</td>
+                                <td>Units</td>
+                            </tr>
+                            <tr data-zone="D">
+                                <td><code class="sku">PACK-0044</code></td>
+                                <td>Corrugated Box - Size XL</td>
+                                <td>D-11-02</td>
+                                <td>85</td>
+                                <td>10</td>
+                                <td>75</td>
+                                <td>Bundle</td>
+                            </tr>
+                            <tr data-zone="C">
+                                <td><code class="sku">APPL-5512</code></td>
+                                <td>Commercial Overhead Fans 220V</td>
+                                <td>C-01-05</td>
+                                <td>43</td>
+                                <td>5</td>
+                                <td>38</td>
+                                <td>Units</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
+    <script src="app.js"></script>
+</body>
+</html>

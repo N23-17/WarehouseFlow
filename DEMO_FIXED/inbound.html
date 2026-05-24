@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbound Receiving - NexusControl</title>
+    <link id="theme-style" rel="stylesheet" href="themes/neo.css" />
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">📦</span>
+                <h2>NexusWMS</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="icon">📊</span> Dashboard
+                </a>
+                <a href="inventory.html" class="nav-item">
+                    <span class="icon">📋</span> Inventory List
+                </a>
+                <a href="inbound.html" class="nav-item active">
+                    <span class="icon">📥</span> Inbound / Receiving
+                </a>
+                <a href="outbound.html" class="nav-item">
+                    <span class="icon">📤</span> Outbound / Shipping
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="nav-item logout">
+                    <span class="icon">🚪</span> Exit Demo
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <div class="page-title">
+                        <h1>Goods Receipt &amp; Inbound Flow</h1>
+                        <p class="subtitle">Log arriving deliveries and allocate items into target warehouse zones</p>
+                    </div>
+                    <select id="themeSwitcher" title="Switch Theme">
+                        <option value="neo">🌐 Neo Logistics</option>
+                        <option value="induspro">🏭 Industrial Pro</option>
+                        <option value="minimal">☀️ Minimal SaaS</option>
+                        <option value="mili">🎖️ Military Command</option>
+                        <option value="luxcop">💎 Luxury Corporate</option>
+                    </select>
+                </div>
+                <div class="user-profile">
+                    <span>🔧</span>
+                    <span>Demo Operator</span>
+                </div>
+            </header>
+
+            <div class="content-body dashboard-grid">
+                <!-- Receipt Entry Form -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Record New Delivery</h2>
+                    </div>
+                    <form id="inboundForm" class="demo-form" onsubmit="return false;">
+                        <div class="form-group">
+                            <label for="poNumber">Purchase Order Reference (PO#)</label>
+                            <input type="text" id="poNumber" placeholder="PO-2026-9912">
+                        </div>
+                        <div class="form-group">
+                            <label for="carrierName">Logistics Carrier Name</label>
+                            <input type="text" id="carrierName" placeholder="DHL Supply Chain / FedEx">
+                        </div>
+                        <div class="form-group">
+                            <label for="skuArrived">SKU Identifier</label>
+                            <input type="text" id="skuArrived" placeholder="ELEC-8821">
+                        </div>
+                        <div class="form-group">
+                            <label for="qtyReceived">Quantity Arrived</label>
+                            <input type="number" id="qtyReceived" placeholder="500">
+                        </div>
+                        <div class="form-group">
+                            <label for="dockBay">Assigned Receiving Dock Bay</label>
+                            <select id="dockBay">
+                                <option value="Dock 01">Dock 01 — North Loading Terminal</option>
+                                <option value="Dock 02">Dock 02 — Bulk Terminal</option>
+                                <option value="Dock 03">Dock 03 — Cold Chain Intake</option>
+                            </select>
+                        </div>
+                        <button type="button" id="btnSubmitInbound" class="btn btn-primary btn-block">
+                            Confirm Goods Inward Receipt
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Active Intake Manifest List -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Staging Area Intake Queue</h2>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>PO Number</th>
+                                <th>SKU</th>
+                                <th>Qty</th>
+                                <th>Dock</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inboundQueueTable">
+                            <tr>
+                                <td><code>PO-2026-0810</code></td>
+                                <td><code class="sku">COMP-4040</code></td>
+                                <td>300</td>
+                                <td>Dock 01</td>
+                                <td><span class="badge badge-success">Putaway Complete</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>PO-2026-0811</code></td>
+                                <td><code class="sku">MECH-1092</code></td>
+                                <td>1,200</td>
+                                <td>Dock 02</td>
+                                <td><span class="badge badge-warning">Staged / Awaiting QC</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
+    <script src="app.js"></script>
+</body>
+</html>
